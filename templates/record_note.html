@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Record Medical Notes</h2>
+<p>Appointment: {{ appointment.date }} at {{ appointment.time }} with {{ appointment.patient.name }}</p>
+<form method="POST">
+    <label>Notes:</label><textarea name="notes">{{ appointment.notes or '' }}</textarea><br>
+    <button type="submit">Save Notes</button>
+</form>
+{% endblock %}

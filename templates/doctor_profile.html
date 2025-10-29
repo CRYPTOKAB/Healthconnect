@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ doctor.name }}</h2>
+<p>Specialty: {{ doctor.specialty }}</p>
+<p>Bio: {{ doctor.bio }}</p>
+{% if current_user.role == 'patient' %}
+    <a href="{{ url_for('book_appointment', doctor_id=doctor.id) }}">Book Appointment</a>
+{% endif %}
+{% endblock %}

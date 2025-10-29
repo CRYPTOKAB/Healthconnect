@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Appointments</h2>
+<ul>
+    {% for app in appointments %}
+        <li>{{ app.date }} at {{ app.time }} - {{ 'Patient' if current_user.role == 'doctor' else 'Doctor' }}: {{ app.patient.name if current_user.role == 'doctor' else app.doctor.name }} - Status: {{ app.status }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

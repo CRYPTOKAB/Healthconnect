@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Register</h2>
+<form method="POST">
+    <label>Email:</label><input type="email" name="email" required><br>
+    <label>Password:</label><input type="password" name="password" required><br>
+    <label>Name:</label><input type="text" name="name" required><br>
+    <label>Role:</label>
+    <select name="role" required>
+        <option value="patient">Patient</option>
+        <option value="doctor">Doctor</option>
+    </select><br>
+    <div id="doctor-fields" style="display:none;">
+        <label>Specialty:</label><input type="text" name="specialty"><br>
+        <label>Bio:</label><textarea name="bio"></textarea><br>
+    </div>
+    <button type="submit">Register</button>
+</form>
+<script>
+    document.querySelector('[name=role]').addEventListener('change', function() {
+        document.getElementById('doctor-fields').style.display = this.value === 'doctor' ? 'block' : 'none';
+    });
+</script>
+{% endblock %}
